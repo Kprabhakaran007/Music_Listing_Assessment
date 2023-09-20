@@ -1,0 +1,56 @@
+package onlyJavaPrograms;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class ExStringArray {
+	public static void main(String[] args) {
+		
+		Map<String, String[]> list= new LinkedHashMap<>();
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Number of users: ");
+		int numberOfUsers = sc.nextInt();
+			
+		for (int i = 0; i < numberOfUsers; i++) {
+			
+			System.out.println("Username:");
+			String userName= sc.next();
+			
+			System.out.println("Number of songs: ");
+			int numberOfSongs= sc.nextInt();
+			
+			String[] songsArray= new String[numberOfSongs];
+			for (int j = 0; j < numberOfSongs; j++) {
+				System.out.println("Enter a song:");
+				String song= sc.next();
+				songsArray[j]= song; 
+			}
+			
+			list.put(userName, songsArray);
+			}
+
+		for (Map.Entry<String, String[]> entry : list.entrySet()) {
+			String key = entry.getKey();
+			String[] val = entry.getValue();
+			System.out.println(key+" and the songs are "+Arrays.toString(val));
+			
+			//String[] newArray= new String[val.length];
+			int k=0;
+			System.out.println("Newly added song: ");
+			String newSong= sc.next();
+			
+			for (int p = 1; p < val.length; p++) {
+				
+				if (p==(val.length-1)) {
+					val[k++] = val[val.length-1];
+					val[val.length-1]=newSong;
+				}
+				else {
+					val[k]=val[p];
+				}k++;
+				
+			} System.out.println("New List: "+Arrays.toString(val));
+		}   
+		}
+		}	
